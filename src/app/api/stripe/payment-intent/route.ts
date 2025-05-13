@@ -1,8 +1,7 @@
+export const dynamic = 'force-dynamic';
+
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
-
-// Route configuration for dynamic API route
-export const dynamic = 'force-dynamic';
 
 if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error('STRIPE_SECRET_KEY environment variable is not set');

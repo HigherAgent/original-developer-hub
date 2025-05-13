@@ -1,4 +1,3 @@
-// Route configuration for webhook handling
 export const dynamic = 'force-dynamic';
 
 import { NextResponse } from 'next/server';

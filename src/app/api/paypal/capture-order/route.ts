@@ -1,7 +1,6 @@
-import { NextResponse } from 'next/server';
-
-// Route configuration for dynamic API route
 export const dynamic = 'force-dynamic';
+
+import { NextResponse } from 'next/server';
 
 // Check for required environment variables
 if (!process.env.PAYPAL_CLIENT_ID) {
