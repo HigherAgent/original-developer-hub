@@ -64,11 +64,5 @@ export async function POST(request: Request) {
   }
 }
 
-// Disable Next.js body parsing, as we need the raw body for Stripe signature verification
+// Route configuration for webhook handling
 export const dynamic = 'force-dynamic';
-export const runtime = 'edge';
-export const preferredRegion = 'auto';
-
-// Use the newer route segment config format
-export const fetchCache = 'force-no-store';
-export const revalidate = 0;
