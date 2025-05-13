@@ -22,6 +22,7 @@ The Developer Hub serves as a professional platform to present work, collect sup
 - **Animation**: [Framer Motion](https://www.framer.com/motion/)
 - **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://github.com/colinhacks/zod)
 - **Content**: MDX for project descriptions and blog posts
+- **Payment Processing**: [Stripe](https://stripe.com/)
 - **Deployment**: [Vercel](https://vercel.com/)
 
 ## Features
@@ -34,12 +35,14 @@ The Developer Hub serves as a professional platform to present work, collect sup
 - Direct links to live projects
 
 ### Centralized Donation System
-- Single donation processing system
+- Single donation processing system using Stripe
 - Project-specific support options
 - General development support option
 - Multiple payment tiers and frequencies
 - Transparent fund allocation description
 - Supporter recognition system
+- Secure payment processing with Stripe Elements
+- Support for one-time and recurring donations
 
 ### Developer Branding
 - About/Bio section
@@ -68,12 +71,12 @@ The Developer Hub serves as a professional platform to present work, collect sup
 
 1. Clone the repository
    ```bash
-   git clone https://github.com/yourusername/developer-hub.git
+   git clone https://github.com/HigherAgent/original-developer-hub.git
    ```
 
 2. Navigate to the project directory
    ```bash
-   cd developer-hub
+   cd original-developer-hub
    ```
 
 3. Install dependencies
@@ -81,12 +84,16 @@ The Developer Hub serves as a professional platform to present work, collect sup
    npm install
    ```
 
-4. Start the development server
+4. Set up environment variables
+   - Copy `.env.local.example` to `.env.local`
+   - Update with your Stripe API keys
+
+5. Start the development server
    ```bash
    npm run dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+6. Open [http://localhost:3000](http://localhost:3000) in your browser
 
 ## Current Status
 
@@ -101,7 +108,7 @@ The project is currently in the development phase with the following progress:
 - ✅ Support/Donation page
 - ✅ Contact page
 - ⏳ Individual project detail pages
-- ⏳ Payment processing integration
+- ✅ Payment processing integration (Stripe)
 - ⏳ Content management system
 - ⏳ Deployment and analytics
 
@@ -109,7 +116,7 @@ The project is currently in the development phase with the following progress:
 
 1. Implement individual project detail pages
 2. Set up content management for project descriptions
-3. Integrate payment processing for donations
+3. Configure Stripe webhooks for donation event handling
 4. Implement analytics to track project views and donations
 5. Set up deployment pipeline
 

@@ -1,11 +1,15 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import DonationForm from '@/components/payment/DonationForm';
 
 export default function SupportPage() {
   const [donationAmount, setDonationAmount] = useState<number | string>(5);
   const [selectedProject, setSelectedProject] = useState('all');
   const [frequency, setFrequency] = useState('one-time');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [showPaymentForm, setShowPaymentForm] = useState(false);
   
   const projectOptions = [
     { id: 'all', name: 'All Projects' },
@@ -21,10 +25,7 @@ export default function SupportPage() {
   
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // This would eventually connect to a payment processor
-    alert(`Thank you for your support! You've selected: $${donationAmount} ${frequency} for ${
-      selectedProject === 'all' ? 'All Projects' : projectOptions.find(p => p.id === selectedProject)?.name
-    }`);
+    setShowPaymentForm(true);
   };
   
   return (
@@ -43,6 +44,7 @@ export default function SupportPage() {
             <div className="card">
               <h2 className="text-2xl font-semibold mb-6 text-neutral-dark">Make a Donation</h2>
               
+              {!showPaymentForm ? (
               <form onSubmit={handleSubmit}>
                 {/* Project Selection */}
                 <div className="mb-6">
@@ -160,6 +162,8 @@ export default function SupportPage() {
                       <input
                         id="name"
                         type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                         className="w-full rounded-md border-neutral-light py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary-blue"
                         placeholder="Your name (optional)"
                       />
@@ -171,6 +175,8 @@ export default function SupportPage() {
                       <input
                         id="email"
                         type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                         className="w-full rounded-md border-neutral-light py-2 px-3 focus:outline-none focus:ring-2 focus:ring-primary-blue"
                         placeholder="Your email (optional)"
                       />
@@ -185,6 +191,27 @@ export default function SupportPage() {
                   </button>
                 </div>
               </form>
+              ) : (
+                <div>
+                  <button 
+                    onClick={() => setShowPaymentForm(false)}
+                    className="mb-6 flex items-center text-primary-blue hover:text-blue-700"
+                  >
+                    <svg className="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                    Back to donation details
+                  </button>
+                  
+                  <DonationForm 
+                    selectedProject={selectedProject}
+                    donationAmount={donationAmount}
+                    frequency={frequency}
+                    name={name}
+                    email={email}
+                  />
+                </div>
+              )}
             </div>
           </div>
           
