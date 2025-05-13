@@ -1,0 +1,7 @@
+# Ignore any files with .bak or .disabled extensions
+*.bak
+*.disabled
+
+# Ignore specific directories that might be causing issues
+.git
+node_modules
