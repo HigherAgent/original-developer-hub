@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
-import { headers } from 'next/headers';
-
 // Route configuration for webhook handling
 export const dynamic = 'force-dynamic';
+
+import { NextResponse } from 'next/server';
+import { headers } from 'next/headers';
 
 // Check for required environment variables
 if (!process.env.PAYPAL_CLIENT_ID) {
