@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { headers } from 'next/headers';
 
+// Route configuration for webhook handling
+export const dynamic = 'force-dynamic';
+
 if (!process.env.STRIPE_SECRET_KEY) {
   throw new Error('STRIPE_SECRET_KEY environment variable is not set');
 }
@@ -63,6 +66,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
-// Route configuration for webhook handling
-export const dynamic = 'force-dynamic';

@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server';
 
+// Route configuration for dynamic API route
+export const dynamic = 'force-dynamic';
+
 // Check for required environment variables
 if (!process.env.PAYPAL_CLIENT_ID) {
   throw new Error('PAYPAL_CLIENT_ID environment variable is not set');

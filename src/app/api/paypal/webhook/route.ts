@@ -1,6 +1,9 @@
 import { NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 
+// Route configuration for webhook handling
+export const dynamic = 'force-dynamic';
+
 // Check for required environment variables
 if (!process.env.PAYPAL_CLIENT_ID) {
   throw new Error('PAYPAL_CLIENT_ID environment variable is not set');
@@ -131,6 +134,3 @@ export async function POST(request: Request) {
     );
   }
 }
-
-// Route configuration for webhook handling
-export const dynamic = 'force-dynamic';
